@@ -19,6 +19,7 @@ export class EventsGateway {
   server: Server;
   @SubscribeMessage('stat')
   stat(@MessageBody() data?: any): WsResponse<any> {
+    if (data === 'reset') this.reset();
     return database as any;
   }
 
